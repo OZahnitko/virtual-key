@@ -54,4 +54,4 @@ jobs:
       - name: SSH into that bitch
         run: |-
           cat ./terraform.pem
-          ssh ec2-user@54.84.211.214 -i ./terraform.pem
+          ssh -o StrictHostKeyChecking=no ec2-user@54.84.211.214 -i ./terraform.pem
