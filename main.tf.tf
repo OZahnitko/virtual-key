@@ -50,7 +50,7 @@ resource "aws_instance" "virtual_key" {
   ami                    = data.aws_ami.amazon_linux_free_tier.id
   instance_type          = "t2.micro"
   key_name               = aws_key_pair.deployer_key.key_name
-  vpc_security_group_ids = [aws_security_group.virtual_sg.id]
+  vpc_security_group_ids = [aws_security_group.virtual_key_sg.id]
 
   tags = {
     Name = "Virtual Key"
