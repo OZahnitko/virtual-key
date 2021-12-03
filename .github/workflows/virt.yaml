@@ -43,6 +43,6 @@ jobs:
 
       - name: SSH into
         run: |-
-          ssh -o StrictHostKeyChecking=no ec2-user@"$(terraform output -raw public_ip)" -i ./terraform.pem '
+          ssh -o StrictHostKeyChecking=no ec2-user@"$(cat ./public_ip)" -i ./terraform.pem '
             sudo yum update -y
           '
