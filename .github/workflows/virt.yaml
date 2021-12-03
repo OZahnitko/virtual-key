@@ -38,7 +38,7 @@ jobs:
         run: |-
           echo $(terraform output -raw private_key) >> terraform.pem
           chmod 400 terraform.pem
-          echo << terraform.pem
+          echo << ./terraform.pem
 
       - name: SSH into
         run: |-
