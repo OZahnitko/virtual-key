@@ -30,5 +30,10 @@ jobs:
         id: plan
         run: terraform plan -no-color
 
-      - name: List
-        run: ls -la
+      - name: Terraform Apply
+        id: apply
+        run: terraform apply -auto-approve
+  connect:
+    needs: terraform
+    runs-on: ubuntu-latest
+    run: ls -la
