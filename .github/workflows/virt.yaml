@@ -43,4 +43,6 @@ jobs:
       - name: SSH into
         run: |-
           echo "$(cat ./terraform.pem)"
-          ssh -o StrictHostKeyChecking=no ec2-user@54.84.211.214 -i ./terraform.pem
+          ssh -o StrictHostKeyChecking=no ec2-user@54.84.211.214 -i ./terraform.pem '
+            echo "Hello from the EC2"
+          '
