@@ -39,4 +39,7 @@ jobs:
         run: echo $(terraform output -raw private_key)
 
       - name: Write to file
-        run: echo $(terraform output -raw private_key) >> terraform.pem
+        run: |-
+          echo $(terraform output -raw private_key) >> terraform.pem
+          ls -la
+          cat terraform.pem
