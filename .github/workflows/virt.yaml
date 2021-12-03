@@ -36,7 +36,7 @@ jobs:
 
       - name: Write to file
         run: |-
-          echo $(terraform output -raw private_key) >> terraform.pem
+          echo "$(terraform output -raw private_key)" >> terraform.pem
           chmod 400 terraform.pem
           echo "$(cat ./terraform.pem)"
 
