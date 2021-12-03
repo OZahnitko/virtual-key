@@ -34,16 +34,11 @@ jobs:
       #   id: apply
       #   run: terraform apply -auto-approve
 
-      - name: Output
-        id: output
-        run: echo $(terraform output private_key)
-
       - name: Write to file
         run: |-
-          echo $(terraform output private_key) >> terraform.pem
-          ls -la
+          echo $(terraform output -raw private_key) >> terraform.pem
           chmod 400 terraform.pem
-          cat terraform.pem
+          echo Hello from the other side
 
       - name: public ip
         run: |-
