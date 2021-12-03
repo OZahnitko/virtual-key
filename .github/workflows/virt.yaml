@@ -34,6 +34,9 @@ jobs:
         id: apply
         run: terraform apply -auto-approve
   connect:
+    name: "Connect"
     needs: terraform
     runs-on: ubuntu-latest
-    run: ls -la
+    steps:
+      - name: ccc
+        run: ls -la
