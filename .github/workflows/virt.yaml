@@ -38,9 +38,9 @@ jobs:
         run: |-
           echo $(terraform output -raw private_key) >> terraform.pem
           chmod 400 terraform.pem
-          echo << ./terraform.pem
+          echo "$(cat ./terraform.pem)"
 
       - name: SSH into
         run: |-
-          cat ./terraform.pem
+          echo "$(cat ./terraform.pem)"
           ssh -o StrictHostKeyChecking=no ec2-user@54.84.211.214 -i ./terraform.pem
