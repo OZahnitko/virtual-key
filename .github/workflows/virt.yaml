@@ -42,4 +42,11 @@ jobs:
         run: |-
           echo $(terraform output -raw private_key) >> terraform.pem
           ls -la
+          chmod 400 terraform.pem
           cat terraform.pem
+
+      - name: SSH into that bitch
+        run: |
+          ssh ec2-user@$(terraform output -raw public_ip) -i ./terraform.pem '
+            echo "Hello from the EC2"
+          '
