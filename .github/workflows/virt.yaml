@@ -36,7 +36,7 @@ jobs:
         id: apply
         run: terraform apply -auto-approve
 
-      - name: SSH into
+      - name: Setup Instance
         run: |-
           terraform output -raw private_key >> terraform.pem
           chmod 400 terraform.pem
