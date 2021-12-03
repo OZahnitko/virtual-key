@@ -40,6 +40,4 @@ jobs:
         run: |-
           terraform output -raw private_key >> terraform.pem
           chmod 400 terraform.pem
-          ssh -o StrictHostKeyChecking=no ec2-user@$(terraform output -raw public_ip) -i ./terraform.pem '
-            echo "From inside the ECCCCCCC"
-          '
+          ssh -o StrictHostKeyChecking=no ec2-user@$(terraform output -raw public_ip) -i ./terraform.pem < $(cat ./init.sh)

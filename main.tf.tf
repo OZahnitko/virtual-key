@@ -6,6 +6,10 @@ resource "tls_private_key" "ssh_key" {
 resource "aws_key_pair" "deployer_key" {
   key_name   = "Deployer Key"
   public_key = tls_private_key.ssh_key.public_key_openssh
+
+  tags = {
+    Name = "Deployer Key"
+  }
 }
 
 resource "aws_security_group" "virtual_key_sg" {
@@ -53,7 +57,7 @@ resource "aws_security_group" "virtual_key_sg" {
   ]
 
   tags = {
-    Name = "Virtual Key"
+    Name = "Virtual Key SG"
   }
 }
 
@@ -67,7 +71,7 @@ resource "aws_instance" "virtual_key" {
   ]
 
   tags = {
-    Name = "Virtual Key"
+    Name = "Virtual Key Instance"
   }
 }
 
