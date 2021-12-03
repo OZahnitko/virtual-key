@@ -44,6 +44,5 @@ jobs:
 
       - name: SSH into
         run: |-
-          HOST=$(< ./public_ip)
-          echo $HOST
-          ssh -o StrictHostKeyChecking=no ec2-user@$HOST -i ./terraform.pem
+          echo "$(cat ./public_ip)"
+          ssh -o StrictHostKeyChecking=no ec2-user@"54.211.104.146" -i ./terraform.pem
