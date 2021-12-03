@@ -38,11 +38,9 @@ jobs:
         run: |-
           echo "$(terraform output -raw private_key)" >> terraform.pem
           chmod 400 terraform.pem
-          echo "$(cat ./terraform.pem)"
 
       - name: SSH into
         run: |-
-          echo "$(cat ./terraform.pem)"
-          ssh -o StrictHostKeyChecking=no ec2-user@54.84.211.214 -i ./terraform.pem '
-            echo "Hello from the EC2"
+          ssh -o StrictHostKeyChecking=no ec2-user@"$(terraform output -raw public_ip)" -i ./terraform.pem '
+            sudo yum update -y
           '
