@@ -44,6 +44,6 @@ jobs:
 
       - name: SSH into
         run: |-
-          HOST="54.211.104.146"
+          HOST=terraform output public_ip
           echo "$HOST"
           ssh -o StrictHostKeyChecking=no ec2-user@$HOST -i ./terraform.pem
