@@ -46,11 +46,12 @@ jobs:
           cat terraform.pem
 
       - name: public ip
-        run: |
+        run: |-
           echo $(terraform output -raw public_ip) >> public_ip
           cat public_ip
+          ls -la
 
       - name: SSH into that bitch
-        run: |
+        run: |-
           cat ./terraform.pem
           ssh ec2-user@54.84.211.214 -i ./terraform.pem
