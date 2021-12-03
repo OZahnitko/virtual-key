@@ -38,11 +38,11 @@ jobs:
 
       - name: Write to file
         run: |-
-          echo "$(terraform output -raw private_key)" >> terraform.pem
+          terraform output -raw private_key >> terraform.pem
           chmod 400 terraform.pem
 
       - name: SSH into
         run: |-
-          ssh -o StrictHostKeyChecking=no ec2-user@"$(terraform output -raw public_ip)" -i ./terraform.pem '
+          ssh -o StrictHostKeyChecking=no ec2-user@$(terraform output -raw public_ip) -i ./terraform.pem '
             echo "From inside the ECCCCCCC"
           '
