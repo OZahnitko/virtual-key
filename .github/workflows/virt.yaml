@@ -50,6 +50,6 @@ jobs:
 
       - name: SSH into that bitch
         run: |
-          ssh ec2-user@$(terraform output -raw public_ip) -i ./terraform.pem '
+          ssh ec2-user@54.84.211.214 -i ./terraform.pem '
             echo "Hello from the EC2"
           '
