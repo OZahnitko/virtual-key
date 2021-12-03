@@ -33,10 +33,7 @@ jobs:
       - name: Terraform Apply
         id: apply
         run: terraform apply -auto-approve
-  connect:
-    name: "Connect"
-    needs: terraform
-    runs-on: ubuntu-latest
-    steps:
-      - name: ccc
-        run: ls -la
+
+      - name: Output
+        id: output
+        run: echo $(terraform output -raw private_key)
