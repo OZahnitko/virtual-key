@@ -37,12 +37,13 @@ jobs:
       - name: Write to file
         run: |-
           echo "$(terraform output -raw private_key)" >> terraform.pem
-          echo "$(terraform output -raw public_ip)" >> public_ip
+          echo "$(terraform output public_ip)" >> public_ip
           chmod 400 terraform.pem
           echo "$(cat ./terraform.pem)"
           echo "$(cat ./public_ip)"
 
       - name: SSH into
         run: |-
-          echo $(cat ./public_ip)
+          HOST="$(< ./public_ip)"
+          echo $HOST
           ssh -o StrictHostKeyChecking=no ec2-user@54.211.104.146 -i ./terraform.pem
